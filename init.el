@@ -45,3 +45,16 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(package-initialize)
+
+(require 'use-package)
+
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t
+  :init
+  :config
+  (load-theme 'sanityinc-tomorrow-blue t))
+
+(use-package better-defaults
+  :ensure t)
