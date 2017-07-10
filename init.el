@@ -1,6 +1,12 @@
 (require 'package)
 (add-to-list 'package-archives
-         '("melpa" . "http://melpa.org/packages/") t)
+             '("gnu" . "https://elpa.gnu.org/packages/") t)
+
+(add-to-list 'package-archives
+             '("marmalade" . "https://marmalade-repo.org/packages/") t)
+
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
 
 (package-initialize)
 
@@ -57,4 +63,26 @@
   (load-theme 'sanityinc-tomorrow-blue t))
 
 (use-package better-defaults
-  :ensure t)
+  :ensure t
+  :init
+  (global-linum-mode))
+
+(use-package tex
+  :ensure auctex
+  :init
+  :config
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  (setq-default TeX-master nil)
+  (add-hook 'LaTeX-mode-hook 'visual-line-mode)
+  (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+  (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+  (setq reftex-plug-into-AUCTeX t))
+
+(use-package latex-preview-pane
+  :ensure t
+  :init
+
+  :config
+  (latex-preview-pane-enable))
