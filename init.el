@@ -65,7 +65,9 @@
 (use-package better-defaults
   :ensure t
   :init
-  (global-linum-mode))
+  (global-linum-mode)
+  (global-auto-revert-mode); refresh externally changed files)
+  )
 
 (use-package tex
   :ensure auctex
@@ -86,3 +88,9 @@
 
   :config
   (latex-preview-pane-enable))
+
+(use-package neotree
+  :ensure t)
+
+(setq make-backup-files nil) ; stop creating backup~ files
+(setq auto-save-default nil) ; stop creating #autosave# file
